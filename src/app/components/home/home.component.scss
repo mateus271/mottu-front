@@ -1,0 +1,41 @@
+.home-container {
+    background-color: var(--color-core-background);
+    width: 100%;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    justify-content: center;
+    
+    .home-inner {
+        padding: 24px 48px;
+        width: 50%;
+
+        .home-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .page-title {
+                font-family: 'Creepster Regular';
+                font-size: 48px;
+                color: var(--font-inner);
+                -webkit-text-stroke: 1px var(--font-outline);
+            }
+
+            .search-input {
+                width: 320px;
+
+                mat-label {
+                    color: var(--color-neutral-content);
+                }
+
+                input {
+                    color: var(--color-neutral-surface);
+                    height: 49px;
+                    
+                    border-radius: 10px;
+                }
+            }
+        }
+
+    }
+}

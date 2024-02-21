@@ -1,0 +1,19 @@
+.favorites-container {
+    background-color: var(--color-core-background);
+    width: 100%;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    justify-content: center;
+    
+    .favorites-inner {
+        padding: 24px 48px;
+        width: 50%;
+
+        .page-title {
+            font-family: 'Creepster Regular';
+            font-size: 48px;
+            color: var(--font-inner);
+            -webkit-text-stroke: 1px var(--font-outline);
+        }
+    }
+}
