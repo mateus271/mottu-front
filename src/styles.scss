@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Creepster';
+    font-family: 'Creepster Regular';
     src: url(./assets/fonts/Creepster-Regular.ttf);
 }
 
@@ -15,13 +15,52 @@
     
     --color-neutral-surface: #FFFFFF;
     --color-neutral-content: #A4A4A4;
+    --color-neutral-content-high: #CACACA;
     --color-neutral-content-onSource: #0A0A0A;
-    
-    font-family: Poppins Regular;
+
+    --font-outline: #B2DF28;
+    --font-inner: #00B5CC;
+
 }
 
-body {
-    margin: 0;
+html, body { 
+    height: 100%; 
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body { 
+    margin: 0;
+    font-family: 'Poppins Regular';
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: var(--color-core-border) !important;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-width: 1px !important;
+}
+
+.mdc-text-field--outlined {
+    --mdc-outlined-text-field-container-shape: 10px !important;
+}
+
+input[type=search]::-ms-clear { 
+    display: none;
+    width : 0;
+    height: 0;
+}
+
+input[type=search]::-ms-reveal { 
+    display: none; width : 0; height: 0; 
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { 
+    display: none;
+}
