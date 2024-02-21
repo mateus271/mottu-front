@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Creepster';
+    src: url(./assets/fonts/Creepster-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Poppins Regular';
+    src: url(./assets/fonts/Poppins-Regular.ttf);
+}
+
+:root {
+    --color-core-foreground: #0A0A0A;
+    --color-core-border: #3D3D3D;
+    --color-core-background: #1F1F1F;
+    
+    --color-neutral-surface: #FFFFFF;
+    --color-neutral-content: #A4A4A4;
+    --color-neutral-content-onSource: #0A0A0A;
+    
+    font-family: Poppins Regular;
+}
+
+body {
+    margin: 0;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
