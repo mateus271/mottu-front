@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
         this.searchCharacters();
         break;
       case "Backspace":
-        if (this.characterName.length === 1) {
+        if (this.characterName.length <= 1) {
           this.getCharacters();
         }
         break;
@@ -45,8 +45,8 @@ export class HomeComponent implements OnInit {
     this.charactersApiService.searchCharacters(this.characterName);
   }
 
-  public checkIfFavorite(id: number): void {
-    this.favoritesService.checkIfFavorite(id);
+  public checkIfFavorite(character: Character): void {
+    this.favoritesService.checkIfFavorite(character);
   }
 
   private getCharacters(): void {

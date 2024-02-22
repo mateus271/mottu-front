@@ -11,7 +11,7 @@
         <div *ngIf="charactersArray.length > 0" class="characters-container">
             <div class="character-card" *ngFor="let character of charactersArray">
                 <img class="character-img" src="{{character.image}}" alt="">
-                <div class="favorite-icon-container" [ngClass]="{'character-is-favorite': characterIsFavorite}" (click)="checkIfFavorite(character.id)">
+                <div class="favorite-icon-container" [ngClass]="{'character-is-favorite': characterIsFavorite}" (click)="checkIfFavorite(character)">
                     <svg *ngIf="!characterIsFavorite" class="favorite-icon" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
                         <path 
                             d="M13.7891 23.3203L13.7109 23.2031L6.875 16.875C5.66406 15.7422 5 14.1797 
