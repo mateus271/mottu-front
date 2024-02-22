@@ -23,4 +23,15 @@ export class CharactersApiService {
             }
         })
     }
+
+    public searchCharacters(characterName: string): void {
+        this.httpClient.get<CharactersApiResponse>(`${this.apiUrl}/character/?name=${characterName}`).subscribe({
+            next: (charactersApiResponse: CharactersApiResponse) => {
+                this.charactersArray.next(charactersApiResponse.results);
+            },
+            error: (error: any) => {
+               this.charactersArray.next([]);
+            }
+        })
+    }
 }

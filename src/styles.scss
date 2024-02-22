@@ -12,10 +12,12 @@
     --color-core-foreground: #0A0A0A;
     --color-core-border: #3D3D3D;
     --color-core-background: #1F1F1F;
+    --color-core-content: #FAFAFA;
     
     --color-neutral-surface: #FFFFFF;
     --color-neutral-content: #A4A4A4;
     --color-neutral-content-high: #CACACA;
+    --color-core-content-low: #A4A4A4;
     --color-neutral-content-onSource: #0A0A0A;
 
     --font-outline: #B2DF28;
@@ -24,7 +26,7 @@
 }
 
 html, body { 
-    height: 100%; 
+    height: 100%;
 }
 
 body { 
