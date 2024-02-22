@@ -9,21 +9,26 @@ import { Character } from "../interfaces/character.type";
 export class FavoritesService {
     public favoritesArray: Character[] = [];
     public favoritesCount: Subject<number> = new Subject<number>();
+    
     private count: number = 0;
 
-    public checkIfFavorite(character: Character): void {
-        let characterId = character.id;
-        let characterIndexOnFavoritesArray = this.favoritesArray.findIndex(character => character.id === characterId);
-        if (characterIndexOnFavoritesArray >= 0) {
-            this.removeFromFavorites(characterIndexOnFavoritesArray);
+    public findCharacterFavoriteIndex(id: number): number {
+        let characterIndexOnFavoritesArray = this.favoritesArray.findIndex(character => character.id === id);
+        return characterIndexOnFavoritesArray;
+    }
+
+    public addOrRemoveFavorite(character: Character): void {
+        let characterFavoriteIndex = this.findCharacterFavoriteIndex(character.id);
+        if (characterFavoriteIndex >= 0) {
+            this.removeFromFavorites(characterFavoriteIndex);
         } else {
             this.addToFavorites(character);
         }
     }
 
     public directlyRemoveFromFavorites(id: number): void {
-        let characterIndexOnFavoritesArray = this.favoritesArray.findIndex(character => character.id === id);
-        this.removeFromFavorites(characterIndexOnFavoritesArray);
+        let characterFavoriteIndex = this.findCharacterFavoriteIndex(id);
+        this.removeFromFavorites(characterFavoriteIndex);
     }
 
     private addToFavorites(character: Character): void {

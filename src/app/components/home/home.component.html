@@ -11,8 +11,8 @@
         <div *ngIf="charactersArray.length > 0" class="characters-container">
             <div class="character-card" *ngFor="let character of charactersArray">
                 <img class="character-img" src="{{character.image}}" alt="">
-                <div class="favorite-icon-container" [ngClass]="{'character-is-favorite': characterIsFavorite}" (click)="checkIfFavorite(character)">
-                    <svg *ngIf="!characterIsFavorite" class="favorite-icon" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                <div class="favorite-icon-container" [ngClass]="isFavorite(character.id) ? 'character-is-favorite' : ''" (click)="addOrRemoveFavorite(character)">
+                    <svg *ngIf="!isFavorite(character.id)" class="favorite-icon" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
                         <path 
                             d="M13.7891 23.3203L13.7109 23.2031L6.875 16.875C5.66406 15.7422 5 14.1797 
                             5 12.5391V12.4219C5 9.6875 6.95312 7.30469 9.64844 6.79688C11.1719 6.48438 
@@ -30,7 +30,7 @@
                             10.9766 14.4922 10.8594 14.3359 10.7031V10.6641Z"/>
                     </svg>
                     
-                    <svg *ngIf="characterIsFavorite" class="favorite-icon" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg *ngIf="isFavorite(character.id)" class="favorite-icon" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
                         <path 
                         d="M6.83594 16.7578C5.66406 15.6641 5 14.1016 5 12.4609V12.2656C5 9.53125 6.95312 7.1875 
                         9.64844 6.75781C11.4453 6.44531 13.2422 7.03125 14.5312 8.28125L15 8.75L15.4688 8.28125C16.7188 

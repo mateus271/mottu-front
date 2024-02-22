@@ -13,7 +13,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
 
 export class HomeComponent implements OnInit {
   public charactersArray: Character[] = [];
-  public characterIsFavorite: boolean = false;
+  public characterIsFavorite: boolean = true;
   public characterName: string = '';
   public searchField: FormControl = new FormControl();
 
@@ -43,8 +43,17 @@ export class HomeComponent implements OnInit {
     this.charactersApiService.searchCharacters(this.characterName);
   }
 
-  public checkIfFavorite(character: Character): void {
-    this.favoritesService.checkIfFavorite(character);
+  public isFavorite(id: number): boolean {
+    let characterFavoriteIndex = this.favoritesService.findCharacterFavoriteIndex(id);
+    if (characterFavoriteIndex >= 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public addOrRemoveFavorite(character: Character): void {
+    this.favoritesService.addOrRemoveFavorite(character);
   }
 
   private getCharacters(): void {
