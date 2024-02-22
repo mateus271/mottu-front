@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { Character } from 'src/app/interfaces/character.type';
 import { CharactersApiService } from 'src/app/services/characters-api.service';
 import { FormControl } from '@angular/forms';
@@ -26,7 +24,7 @@ export class HomeComponent implements OnInit {
     this.setCharacters();
   }
 
-  public onKeyDown(event: KeyboardEvent) {
+  public onKeyUp(event: KeyboardEvent) {
     switch (event.key) {
       case "Enter":
         this.searchCharacters();

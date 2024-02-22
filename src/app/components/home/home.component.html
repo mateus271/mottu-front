@@ -4,7 +4,7 @@
             <p class="page-title">Início</p>
             <mat-form-field appearance="outline" class="search-input" subscriptSizing="dynamic" >
                 <mat-label>Pesquisar</mat-label>
-                <input id="search-input" type="search" matInput [(ngModel)]="characterName" (keydown)="onKeyDown($event)">
+                <input id="search-input" type="search" matInput [(ngModel)]="characterName" (keyup)="onKeyUp($event)">
             </mat-form-field>
         </div>
 
