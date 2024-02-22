@@ -15,8 +15,9 @@
                         11.4688 21 11.7188 20.9688 12Z"
                     />
                 </svg>
-                
-                Início
+                <span *ngIf="!isMobile">
+                    Início
+                </span>
             </button>
             <button class="header-button favorites-button" [ngClass]="activeRoute.includes('favorites') ? 'active-button' : 'inactive-button'" (click)="goToFavoritesPage()">
                 <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -27,8 +28,9 @@
                         18.6875C12.625 18.9062 12.3125 19 12 19C11.6562 19 11.3438 18.9062 11.125 18.6875L5.46875 13.4062Z"
                     />
                 </svg>
-                
-                Favoritos 
+                <span *ngIf="!isMobile">
+                    Favoritos
+                </span>
                 <span class="favorites-count">{{ favoriteCount }}</span>
             </button>
         </div>

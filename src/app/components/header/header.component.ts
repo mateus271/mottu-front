@@ -11,6 +11,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
 export class HeaderComponent implements OnInit {
   public favoriteCount: number = 0;
   public activeRoute: string = '';
+  public isMobile: boolean = false;
 
   constructor(public router: Router, private favoritesService: FavoritesService) {
     this.router.events.subscribe(events => {
@@ -24,6 +25,10 @@ export class HeaderComponent implements OnInit {
     this.favoritesService.favoritesCount.subscribe(count => {
       this.favoriteCount = count;
     })
+
+    if (window.screen.width < 600) {
+      this.isMobile = true;
+    }
   }
 
   public goToHomePage(): void {
