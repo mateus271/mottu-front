@@ -2,7 +2,7 @@
     <div class="header-inner">
         <img class="header-logo" src="../../../assets/header/header-logo.png" alt="Logo Rick and Morty">
         <div class="header-buttons-container">
-            <button class="header-button home-button active-button">
+            <button class="header-button home-button" [ngClass]="activeRoute.includes('home') ? 'active-button' : 'inactive-button'" (click)="goToHomePage()">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path 
                         d="M20.9688 12C20.9688 12.5625 20.5 13 19.9688 13H18.9688L19 18C19 18.0938 19 18.1875 
@@ -18,7 +18,7 @@
                 
                 Início
             </button>
-            <button class="header-button favorites-button inactive-button">
+            <button class="header-button favorites-button" [ngClass]="activeRoute.includes('favorites') ? 'active-button' : 'inactive-button'" (click)="goToFavoritesPage()">
                 <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path 
                         d="M5.46875 13.4062C4.53125 12.5312 4 11.2812 4 9.96875V9.8125C4 7.625 5.5625 5.75 7.71875 

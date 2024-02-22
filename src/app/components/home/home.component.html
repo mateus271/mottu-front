@@ -2,10 +2,54 @@
     <div class="home-inner">
         <div class="home-head">
             <p class="page-title">Início</p>
-            <mat-form-field appearance="outline" class="search-input" subscriptSizing="dynamic">
+            <mat-form-field appearance="outline" class="search-input" subscriptSizing="dynamic" >
                 <mat-label>Pesquisar</mat-label>
-                <input type="search" matInput>
+                <input id="search-input" type="search" matInput [(ngModel)]="characterName" (keydown)="onKeyDown($event)">
             </mat-form-field>
+        </div>
+
+        <div *ngIf="charactersArray.length > 0" class="characters-container">
+            <div class="character-card" *ngFor="let character of charactersArray">
+                <img class="character-img" src="{{character.image}}" alt="">
+                <div class="favorite-icon-container" [ngClass]="{'character-is-favorite': characterIsFavorite}" (click)="checkIfFavorite(character.id)">
+                    <svg *ngIf="!characterIsFavorite" class="favorite-icon" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                        <path 
+                            d="M13.7891 23.3203L13.7109 23.2031L6.875 16.875C5.66406 15.7422 5 14.1797 
+                            5 12.5391V12.4219C5 9.6875 6.95312 7.30469 9.64844 6.79688C11.1719 6.48438 
+                            12.7344 6.83594 14.0234 7.73438C14.375 7.96875 14.6875 8.28125 15 8.59375C15.1562 
+                            8.4375 15.3125 8.24219 15.5078 8.08594C15.6641 7.96875 15.8203 7.85156 15.9766 
+                            7.73438C17.2266 6.83594 18.7891 6.48438 20.3125 6.79688C23.0469 7.30469 25 9.6875 
+                            25 12.4219V12.5391C25 14.1797 24.2969 15.7422 23.0859 16.875L16.25 23.2031L16.1719 
+                            23.3203C15.8594 23.5938 15.4297 23.7891 15 23.7891C14.5312 23.7891 14.1406 23.5938 
+                            13.7891 23.3203ZM14.3359 10.6641C14.2969 10.6641 14.2969 10.6641 14.2969 10.625L13.5938 
+                            9.84375C12.6953 8.82812 11.3281 8.39844 10 8.63281C8.16406 8.98438 6.875 10.5859 6.875 
+                            12.4219V12.5391C6.875 13.6719 7.30469 14.7266 8.125 15.4688L15 21.8359L21.8359 
+                            15.4688C22.6562 14.7266 23.125 13.6719 23.125 12.5391V12.4219C23.125 10.5859 21.7969 
+                            8.98438 19.9609 8.63281C18.6328 8.39844 17.2656 8.82812 16.3672 9.84375L15.6641 10.625C15.6641 
+                            10.6641 15.6641 10.6641 15.625 10.7031C15.4688 10.8594 15.2344 10.9766 15 10.9766C14.7266 
+                            10.9766 14.4922 10.8594 14.3359 10.7031V10.6641Z"/>
+                    </svg>
+                    
+                    <svg *ngIf="characterIsFavorite" class="favorite-icon" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path 
+                        d="M6.83594 16.7578C5.66406 15.6641 5 14.1016 5 12.4609V12.2656C5 9.53125 6.95312 7.1875 
+                        9.64844 6.75781C11.4453 6.44531 13.2422 7.03125 14.5312 8.28125L15 8.75L15.4688 8.28125C16.7188 
+                        7.03125 18.5547 6.44531 20.3125 6.75781C23.0078 7.1875 25 9.53125 25 12.2656V12.4609C25 14.1016 
+                        24.2969 15.6641 23.125 16.7578L16.0547 23.3594C15.7812 23.6328 15.3906 23.75 15 23.75C14.5703 
+                        23.75 14.1797 23.6328 13.9062 23.3594L6.83594 16.7578Z" fill="#0A0A0A"/>
+                    </svg>
+                </div>
+                <div class="character-info-container">
+                    <p class="character-name">{{character.name}}</p>
+                    <p class="character-species">{{character.species}}</p>
+                    <p class="character-type">{{character.type}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="charactersArray.length === 0" class="no-results-container">
+            <h1 class="no-results-title">Nada foi encontrado</h1>
+            <h2 class="no-results-subtitle">Tente realizar uma nova busca</h2>
         </div>
     </div>
 </div>
