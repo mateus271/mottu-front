@@ -3,6 +3,8 @@ Projeto Angular desenvolvido como parte do processo seletivo para a Mottu. Consi
 
 Desenvolvido com angular 16.2.12. Para rodar a aplicação, basta utilizar "ng serve" no terminal.
 
+Você pode ver o projeto rodado, clicando [aqui](https://mateus271.github.io/mottu-front/).
+
 
 ## Observações:
 
