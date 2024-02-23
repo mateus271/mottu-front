@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { FavoritesService } from 'src/app/services/favorites.service';
 
 @Component({
@@ -13,6 +14,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public activeRoute: string = '';
   public isMobile: boolean = false;
 
+  private favoriteCountSubscription: Subscription;
+
   constructor(public router: Router, private favoritesService: FavoritesService) {
     this.router.events.subscribe(events => {
       if (events instanceof NavigationEnd) {
@@ -22,7 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.favoritesService.favoritesCount.subscribe(count => {
+    this.favoriteCountSubscription = this.favoritesService.favoritesCount.subscribe(count => {
       this.favoriteCount = count;
     })
 
@@ -32,7 +35,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.favoritesService.favoritesCount.unsubscribe();
+    this.favoriteCountSubscription.unsubscribe();
   }
 
   public goToHomePage(): void {

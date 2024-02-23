@@ -3,6 +3,7 @@ import { Character } from 'src/app/interfaces/character.type';
 import { CharactersApiService } from 'src/app/services/characters-api.service';
 import { FormControl } from '@angular/forms';
 import { FavoritesService } from 'src/app/services/favorites.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -17,6 +18,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   public characterName: string = '';
   public searchField: FormControl = new FormControl();
 
+  private charactersArraySubscription: Subscription;
+
   constructor(private charactersApiService: CharactersApiService, private favoritesService: FavoritesService) {}
 
   ngOnInit(): void {
@@ -25,7 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.charactersApiService.charactersArray.unsubscribe();
+      this.charactersArraySubscription.unsubscribe();
   }
 
   public onKeyUp(event: KeyboardEvent) {
@@ -65,7 +68,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private setCharacters(): void {
-    this.charactersApiService.charactersArray.subscribe({
+    this.charactersArraySubscription = this.charactersApiService.charactersArray.subscribe({
       next: (charactersArray: Character[]) => {
         this.charactersArray = charactersArray;
       }
