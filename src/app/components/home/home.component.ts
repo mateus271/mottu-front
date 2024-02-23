@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Character } from 'src/app/interfaces/character.type';
 import { CharactersApiService } from 'src/app/services/characters-api.service';
 import { FormControl } from '@angular/forms';
@@ -11,7 +11,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
   styleUrls: ['./home.component.scss'],
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   public charactersArray: Character[] = [];
   public characterIsFavorite: boolean = true;
   public characterName: string = '';
@@ -22,6 +22,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getCharacters();
     this.setCharacters();
+  }
+
+  ngOnDestroy(): void {
+      this.charactersApiService.charactersArray.unsubscribe();
   }
 
   public onKeyUp(event: KeyboardEvent) {

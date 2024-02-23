@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { FavoritesService } from 'src/app/services/favorites.service';
 
@@ -8,7 +8,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   public favoriteCount: number = 0;
   public activeRoute: string = '';
   public isMobile: boolean = false;
@@ -29,6 +29,10 @@ export class HeaderComponent implements OnInit {
     if (window.screen.width < 600) {
       this.isMobile = true;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.favoritesService.favoritesCount.unsubscribe();
   }
 
   public goToHomePage(): void {
